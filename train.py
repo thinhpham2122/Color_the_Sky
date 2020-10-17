@@ -26,8 +26,8 @@ def get_features_labels():
     labels = []
     for id in range(number_of_image):
         image_name = path_to_feature + "/id" + str(id) + ".jpeg"
-        image = np.asarray(Image.open(image_name))
-        print(image.shape)
+        image = np.asarray(Image.open(image_name)) / 255
+        print(image)
         labels.append(image)
 
     features = get_features(labels)
@@ -40,7 +40,7 @@ def get_model(model_name=None):
     def create_model():
         model = Sequential()
         model.add(Conv2D(16, (3, 3), activation='relu', padding="same", input_shape=(512, 512, 1)))
-        model.add(Conv2D(3, (3, 3), padding="same"))
+        model.add(Conv2D(3, (3, 3), activation='relu', padding="same"))
         model.compile(optimizer='adam', loss='mse')
         return model
 
@@ -59,12 +59,25 @@ def get_model(model_name=None):
         return create_model()
 
 
+def output_images(predictions):
+    for i, prediction in enumerate(predictions):
+        print(i, prediction.shape, type(prediction))
+        image = (prediction * 255).astype(np.uint8)
+        print(image)
+        Image.fromarray(image).save('test_output/output' + str(i) + '.jpeg')
+
+
 def main():
     features, labels = get_features_labels()
+    cutoff = round(len(features) * .8)
+    train_feature, test_feature = features[0:cutoff], features[cutoff:]
+    train_label = labels[0:cutoff]
     model_name = 'test_model'
     model = get_model(model_name)
-    model.fit(features, labels, epochs=10)
+    model.fit(train_feature, train_label, epochs=20)
     model.save('keras_model/' + model_name)
+    predictions = model.predict(test_feature)
+    output_images(predictions)
 
 
 if __name__ == '__main__':
