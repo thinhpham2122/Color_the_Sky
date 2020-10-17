@@ -3,45 +3,44 @@ import numpy as np
 from tensorflow.keras.models import Sequential, load_model
 from tensorflow.keras.layers import Dense, Dropout, Conv2D
 
-number_of_image = 1
-path_to_feature = "/feature"
+number_of_image = 5
+path_to_feature = "feature"
 
 
 def rgb2gray(rgb):
-    r, g, b = rgb[:, :, 0], rgb[:, :, 1], rgb[:, :, 2]
-    gray = (r + g + b) / 3
-    return gray
+    gray = np.mean(rgb, axis=2)
+    return gray.reshape(512, 512, 1)
 
 
-def get_labels(features):
-    labels = []
-    for rgb in features:
+def get_features(labels):
+    features = []
+    for rgb in labels:
         gray_image = rgb2gray(rgb)
-        labels.append(gray_image)
-    labels = np.array(labels)
-    print(labels.shape)
-    return labels
+        features.append(gray_image)
+    features = np.array(features)
+    print("Features shape: " + str(features.shape))
+    return features
 
 
 def get_features_labels():
-    features = []
+    labels = []
     for id in range(number_of_image):
-        image_name = path_to_feature + "id" + str(id) + ".png"
+        image_name = path_to_feature + "/id" + str(id) + ".jpeg"
         image = np.asarray(Image.open(image_name))
         print(image.shape)
-        features.append(image)
+        labels.append(image)
 
-    labels = get_labels(features)
-    features = np.array(features)
-    print(features.shape)
+    features = get_features(labels)
+    labels = np.array(labels)
+    print("Labels shape: " + str(labels.shape))
     return features, labels
 
 
 def get_model(model_name=None):
     def create_model():
         model = Sequential()
-        model.add(Conv2D(16, (3, 3), activation='relu', inputshape=(512, 512, 3)))
-        model.add(Conv2D(1, (3, 3)))
+        model.add(Conv2D(16, (3, 3), activation='relu', padding="same", input_shape=(512, 512, 1)))
+        model.add(Conv2D(3, (3, 3), padding="same"))
         model.compile(optimizer='adam', loss='mse')
         return model
 
@@ -62,7 +61,10 @@ def get_model(model_name=None):
 
 def main():
     features, labels = get_features_labels()
-    get_model('test_model')
+    model_name = 'test_model'
+    model = get_model(model_name)
+    model.fit(features, labels, epochs=10)
+    model.save('keras_model/' + model_name)
 
 
 if __name__ == '__main__':
