@@ -1,4 +1,5 @@
 
+
 # **Color the Sky: A Machine Learning Model for Image Colorization**
 
 Project created for HackGT 7.
@@ -78,9 +79,18 @@ The main file of interest for applying Color The Sky is `run.py`. A full list of
 
 By default, input data for `run.py` should be placed in `./feature`. However, this assumes images have already been downscaled and otherwise prepared. If you have data that is not already in the expected form, place it in `raw_image` and run `ImageProcessor.java` which will automatically do this for you. 
 
+ImageProcessor.java
+
+In order to use this file, users can configure the two following variable:
+
+
+
+*   inPath: The path to the images folder
+*   outPath: The path to the target output folder
 
 ### 
 **Application**
+
 
 Once your data is in the appropriate directories, all you need to do is
 
