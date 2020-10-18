@@ -30,9 +30,8 @@ The aim of doing this is both provide the basis for an image colorization model 
 ## 
 **What does it do?**
 
-Given an input image, Color the Sky resamples to a 512x512 px resolution to standardize the images placed in the `raw_image `folder. The resized images are output into the `feature `folder, which is when the trained model steps in. 
-
-The Color the Sky model takes the black and white images in the `feature `folder and applies colorization ***[elaborate on how the model does this]**
+Given an input image, Color the Sky resamples to a 512x512 px resolution to standardize the images placed in the raw_image folder. The resized images are output into the feature folder, which is when the trained model steps in. 
+The Color the Sky model takes the black and white images in the feature folder and applies colorization. The model looks at the difference between the gray scale and the colored images and tries to tune it’s parameters to map one image to another. The model consists of several convolution layers and uses the Adam optimizer to learn the parameter. The result after training is a model that can take any image that resembles the training data and produce a colorized version of it.
 
 Example Before and After Images:
 ![input254](test_input/input254.jpeg)| ![input254](test_output/output254.jpeg)
