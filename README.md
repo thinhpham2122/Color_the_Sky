@@ -24,7 +24,7 @@ Project created for HackGT 7.
 **Inspiration and Objective**
 
 
-Color the Sky’s intention, as a project, is to create a machine learning model capable of colorizing black and white Before:						After:or grayscale images and providing those colorized images as output. This particular project’s scope is presently limited to a focus on colorizing images of the sky, which is what the model was trained on. 
+Color the Sky’s intention, as a project, is to create a machine learning model capable of colorizing black and white or grayscale images and providing those colorized images as output. This particular project’s scope is presently limited to a focus on colorizing images of the sky, which is what the model was trained on. 
 
 The aim of doing this is both provide the basis for an image colorization model for future use and to educate on the process of creating and applying such a model. 
 
