@@ -5,6 +5,8 @@
 Project created for HackGT 7.
 
 ![logo](logo.png)
+
+ Team members: Thinh Pham, Ian Carpenter, Thao Tran
 # 
 **Table of Contents**
 
