@@ -4,7 +4,13 @@
 
 Project created for HackGT 7.
 
+![input254](test_input/input254.jpeg)| ![input254](test_output/output254.jpeg)
+---|---
+![input285](test_input/input285.jpeg)| ![input285](test_output/output285.jpeg)
 
+![input242](test_input/input242.jpeg)| ![input242](test_output/output242.jpeg)
+---|---
+![input268](test_input/input268.jpeg)| ![input268](test_output/output268.jpeg)
 
 ---
 
