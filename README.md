@@ -4,18 +4,7 @@
 
 Project created for HackGT 7.
 
-![input254](test_input/input254.jpeg)| ![input254](test_output/output254.jpeg)
----|---
-![input285](test_input/input285.jpeg)| ![input285](test_output/output285.jpeg)
-
-![input242](test_input/input242.jpeg)| ![input242](test_output/output242.jpeg)
----|---
-![input268](test_input/input268.jpeg)| ![input268](test_output/output268.jpeg)
-
----
-
-
-
+![logo](logo.png)
 # 
 **Table of Contents**
 
@@ -46,12 +35,15 @@ Given an input image, Color the Sky resamples to a 512x512 px resolution to stan
 The Color the Sky model takes the black and white images in the `feature `folder and applies colorization ***[elaborate on how the model does this]**
 
 Example Before and After Images:
+![input254](test_input/input254.jpeg)| ![input254](test_output/output254.jpeg)
+---|---
+![input285](test_input/input285.jpeg)| ![input285](test_output/output285.jpeg)
 
-Before:						After:
+![input242](test_input/input242.jpeg)| ![input242](test_output/output242.jpeg)
+---|---
+![input268](test_input/input268.jpeg)| ![input268](test_output/output268.jpeg)
 
-Before:						After:
-
-Before:						After:
+---
 
 
 ## 
